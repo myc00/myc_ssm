@@ -12,6 +12,15 @@ public class UserInfo {
     private int status;
     private String statusStr;
     private List<Role> roles;
+    private String permisson;
+
+    public String getPermisson() {
+        return permisson;
+    }
+
+    public void setPermisson(String permisson) {
+        this.permisson = permisson;
+    }
 
     public String getId() {
         return id;
@@ -62,6 +71,11 @@ public class UserInfo {
     }
 
     public String getStatusStr() {
+        if(this.status==0){
+            this.statusStr="未开启";
+        }else {
+            this.statusStr="开启";
+        }
         return statusStr;
     }
 

@@ -1,10 +1,9 @@
 package dao;
 
 import domain.UserInfo;
-import org.apache.ibatis.annotations.Many;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 public interface IUserDao {
 
@@ -19,4 +18,13 @@ public interface IUserDao {
             @Result(property = "roles",column = "id",javaType = java.util.List.class,many = @Many(select = "dao.IRoleDao.findRoleByUserId"))
     })
     UserInfo findByUsername(String name);
+
+    @Select("select * from users")
+    List<UserInfo> findAll() throws Exception;
+
+    @Insert("insert into users(email,username,password,phoneNum,status) values(#{email},#{username},#{password},#{phoneNum},#{status})")
+    void save(UserInfo userinfo) throws Exception;
+
+    @Insert("insert into users_role(roleId) values(#{roleId})")
+    void insertUser_Role(String roleId) throws Exception;
 }

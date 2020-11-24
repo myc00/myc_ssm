@@ -1,0 +1,7 @@
+dao\IUserDao.class
+dao\IProductDao.class
+dao\IPermissionDao.class
+dao\IRoleDao.class
+dao\ITravellerDao.class
+dao\IMemberDao.class
+dao\IOrdersDao.class

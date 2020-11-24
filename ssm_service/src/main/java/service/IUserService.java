@@ -7,7 +7,9 @@ import java.util.List;
 
 public interface IUserService extends UserDetailsService {
 
-    List<UserInfo> findAll() throws Exception;
+    List<UserInfo> findAll(int page,int size) throws Exception;
 
     void save(UserInfo userinfo,String roleId) throws Exception;
+
+    UserInfo findById(String id) throws Exception;
 }

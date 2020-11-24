@@ -1,5 +1,6 @@
 package service.impl;
 
+import com.github.pagehelper.PageHelper;
 import dao.IUserDao;
 import domain.Role;
 import domain.UserInfo;
@@ -45,7 +46,8 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public List<UserInfo> findAll() throws Exception {
+    public List<UserInfo> findAll(int page,int size) throws Exception {
+        PageHelper.startPage(page, size);
         List<UserInfo> userInfos=userDao.findAll();
         return userInfos;
     }
@@ -55,5 +57,11 @@ public class UserServiceImpl implements IUserService {
         userinfo.setPassword(bCryptPasswordEncoder.encode(userinfo.getPassword()));
         userDao.save(userinfo);
         userDao.insertUser_Role(orderid);
+    }
+
+    @Override
+    public UserInfo findById(String id) throws Exception {
+        UserInfo userInfo=userDao.findById(id);
+        return userInfo;
     }
 }

@@ -27,4 +27,16 @@ public interface IUserDao {
 
     @Insert("insert into users_role(roleId) values(#{roleId})")
     void insertUser_Role(String roleId) throws Exception;
+
+    @Select("select * from users where id=#{id}")
+    @Results({
+            @Result(id = true, property = "id", column = "id"),
+            @Result(property = "username", column = "username"),
+            @Result(property = "email", column = "email"),
+            @Result(property = "password", column = "password"),
+            @Result(property = "phoneNum", column = "phoneNum"),
+            @Result(property = "status", column = "status"),
+            @Result(property = "roles",column = "id",javaType = java.util.List.class,many = @Many(select = "dao.IRoleDao.findRoleByUserId"))
+    })
+    UserInfo findById(String id);
 }

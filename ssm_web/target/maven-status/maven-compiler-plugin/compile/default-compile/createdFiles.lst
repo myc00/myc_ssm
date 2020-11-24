@@ -1,0 +1,5 @@
+controller\PermissionController.class
+controller\RolesController.class
+controller\OrdersController.class
+controller\UserController.class
+controller\ProductController.class

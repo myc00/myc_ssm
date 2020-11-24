@@ -12,15 +12,6 @@ public class UserInfo {
     private int status;
     private String statusStr;
     private List<Role> roles;
-    private String permisson;
-
-    public String getPermisson() {
-        return permisson;
-    }
-
-    public void setPermisson(String permisson) {
-        this.permisson = permisson;
-    }
 
     public String getId() {
         return id;
